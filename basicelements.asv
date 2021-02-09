@@ -41,20 +41,13 @@ for r = 1:1:101
     T(r) = Tb + ((Ta - Tb)*log(b/(r*0.01 + 0.99))/log(b/a));
 end
 
-hold on
+
 plot(T) 
 xlabel('Radial position')
 ylabel('Temperature')
 
-for r = 1:10:101
-     Ta = 0;
-    Tb = 100;
-    a = 1;
-    b = 2;
-    T(r) = Tb + ((Ta - Tb)*log(b/(r*0.01 + 0.99))/log(b/a));
-end
+for
 
-plot(T, 'o');
 
 
     
