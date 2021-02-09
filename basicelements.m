@@ -62,10 +62,31 @@ plot(T, 'o');
 % Create two vectors, a row vector whose elements are 2n+1
 % and a column vector whose elements are 3n+2, for n = 0,1,…,6. 
 
+n1 = [0 1 2 3 4 5 6];
+n2 = [0 1 2 3 4 5 6]';
+vrow = 2*n1 + 1;
+vcol = (3*n2 + 2);
+
+
 %% Problem 4
 % Create a 5x5 square matrix whose elements are -1 along
 % the diagonal and 1 everywhere else.  Please define the matrix using
 % any of the following built-in functions: |zeros|, |ones|, and |diag|.
+
+% matrix1 = ones(5);
+% matrix2 = diag(-1);
+% matrix = [matrix1;matrix2];
+% disp(matrix)
+
+
+a = ones(1,5);
+M = diag(-a);ones(5);  
+%M(1,:) = [ones(1,4)  1];
+%M(:, 1) = a; 
+%M(5,:) = a; 
+disp(M)
+
+
 
 %% Problem 5
 % Given the following system of equations
@@ -80,6 +101,12 @@ plot(T, 'o');
 %
 % determine a, b, c, and d.
 
+constants = [1 2 3 4 ; 2 1 3 4 ; 3 1 2 4 ; 4 1 2 3];
+results = [30 29 27 24'];
+abcd = results/constants;
+disp(abcd)
+ 
+
 %% Problem 6
 % The motion of a particular damped oscillator is
 % described mathematically as the product of a decay function G1(t)
@@ -89,5 +116,13 @@ plot(T, 'o');
 %
 % Reproduce the graph below depicting the decay function
 % G1(t) and the damped oscillatory motion F(t).
+
+
+t = 0:0.1:10;
+f = exp(-t/2).*sin(5*t);
+plot(t,f)
+hold on
+G1 = exp(-t/2);
+plot(t, G1)
 
 
