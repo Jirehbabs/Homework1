@@ -29,33 +29,27 @@ f = (1/2*pi)*sqrt(k1*k2/m*(k1+k2));
 % * On top of that plot, plot every 10th temperature value as a circle.
 % * Label the axes and provide a title for the plot.
 
-    Ta = 0;
-    Tb = 100;
-    a = 1;
-    b = 2;
+%     Ta = 0;
+%     Tb = 100;
+%     a = 1;
+%     b = 2;
+
 for r = 1:1:101
     Ta = 0;
     Tb = 100;
     a = 1;
     b = 2;
-    T(r) = Tb + ((Ta - Tb)*log(b/(r*0.01 + 0.99))/log(b/a));
+    T(r) = Tb + ((Ta - Tb)*(log(b/(r*0.01 + 0.99)))/log(b/a));
 end
 
-hold on
-plot(T) 
+r1= [1 :0.01: 2]; 
+hold on 
+plot(r1, T)
+plot(r1(1:10:101), T(1:10:101), 'go')
+hold off
+title('The temperature Distribution between to Concentric Tubes') 
 xlabel('Radial position')
 ylabel('Temperature')
-
-for r = 1:10:101
-     Ta = 0;
-    Tb = 100;
-    a = 1;
-    b = 2;
-    T(r) = Tb + ((Ta - Tb)*log(b/(r*0.01 + 0.99))/log(b/a));
-end
-
-plot(T, 'o');
-
 
     
 %% Problem 3
@@ -73,18 +67,11 @@ vcol = (3*n2 + 2);
 % the diagonal and 1 everywhere else.  Please define the matrix using
 % any of the following built-in functions: |zeros|, |ones|, and |diag|.
 
-% matrix1 = ones(5);
-% matrix2 = diag(-1);
-% matrix = [matrix1;matrix2];
-% disp(matrix)
 
-
-a = ones(1,5);
-M = diag(-a);ones(5);  
-%M(1,:) = [ones(1,4)  1];
-%M(:, 1) = a; 
-%M(5,:) = a; 
-disp(M)
+M = ones(5,5); 
+v = [-2 -2 -2 -2 -2]; 
+M1 = diag(v)
+M2 = M1 + M 
 
 
 
@@ -117,10 +104,20 @@ abcd = results/constants;
 % G1(t) and the damped oscillatory motion F(t).
 
 
-t = 0:0.1:7;
+t = 1:0.1:5;
 f = exp(-t/2).*sin(5*t);
+plot(t,f, '-o','MarkerIndices',1:5:length(f))
+G1 = exp(-t/2);
+plot(t, G1, '--green')
+
+
+t= [1 :0.1: 5]; 
+hold on 
 plot(t,f)
-hold on
-G1 = exp(-t/2)    
+%plot(t(1:5:51), f(1:5:51),  'go') %Supposed to create the circles here
+hold off
+title('Damped Oscillator') 
+ylabel('amplitude')
+xlabel('time')
 
 
